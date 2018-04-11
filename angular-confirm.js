@@ -9,7 +9,9 @@
   if (typeof define === 'function' && define.amd) {
     define(['angular'], factory);
   } else if (typeof module !== 'undefined' && typeof module.exports === 'object') {
-    module.exports = factory(require('angular'));
+    //relay on global angular because its seems that webpack cannot resolve this require 
+    //module.exports = factory(require('angular'));
+    module.exports = factory(window.angular);
   } else {
     return factory(root.angular);
   }
